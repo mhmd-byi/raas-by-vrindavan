@@ -4,6 +4,9 @@ import Image from "next/image";
 import { useRef, useState } from "react";
 import { galleryItems } from "@/lib/site";
 
+// Mixed crops of the same landscape photos give the columns their uneven, masonry rhythm.
+const shapes = ["aspect-[3/4]", "aspect-[4/3]", "aspect-square", "aspect-[4/5]", "aspect-[3/2]", "aspect-[3/5]"];
+
 const categories = ["All", ...Array.from(new Set(galleryItems.map((g) => g.cat)))];
 
 export default function Gallery() {
@@ -38,10 +41,10 @@ export default function Gallery() {
         ))}
       </div>
 
-      <ul className="mt-10 grid grid-cols-2 gap-3 md:grid-cols-3 lg:gap-4">
+      <ul className="mt-10 columns-2 gap-3 md:columns-3 lg:gap-4">
         {items.map((g, i) => (
-          <li key={g.src}>
-            <button type="button" onClick={() => open(i)} className="group relative block aspect-[3/2] w-full overflow-hidden bg-surface">
+          <li key={g.src} className="mb-3 break-inside-avoid lg:mb-4">
+            <button type="button" onClick={() => open(i)} className={`group relative block w-full overflow-hidden bg-surface ${shapes[i % shapes.length]}`}>
               <Image
                 src={g.src}
                 alt={g.alt}
