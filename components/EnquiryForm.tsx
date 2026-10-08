@@ -6,14 +6,14 @@ import { submitEnquiry, type EnquiryState } from "@/app/actions";
 const initial: EnquiryState = { status: "idle" };
 
 const field =
-  "w-full border border-maroon/25 bg-white px-4 py-3 text-sm outline-none transition-colors focus:border-gold-dark";
+  "mt-2 w-full border border-white/15 bg-surface px-4 py-3 text-sm text-white outline-none transition-colors placeholder:text-white/30 focus:border-gold";
 
 export default function EnquiryForm() {
   const [state, action, pending] = useActionState(submitEnquiry, initial);
 
   if (state.status === "success") {
     return (
-      <p role="status" className="border border-gold bg-white p-8 text-center font-display text-2xl text-maroon">
+      <p role="status" className="border border-gold/60 bg-surface p-8 text-center font-display text-3xl text-gold">
         {state.message}
       </p>
     );
@@ -24,17 +24,17 @@ export default function EnquiryForm() {
       <label className="text-sm">
         Name *
         <input name="name" required autoComplete="name" className={field} />
-        {state.errors?.name && <span className="text-xs text-red-700">{state.errors.name}</span>}
+        {state.errors?.name && <span className="text-xs text-red-400">{state.errors.name}</span>}
       </label>
       <label className="text-sm">
         Phone *
         <input name="phone" type="tel" required autoComplete="tel" className={field} />
-        {state.errors?.phone && <span className="text-xs text-red-700">{state.errors.phone}</span>}
+        {state.errors?.phone && <span className="text-xs text-red-400">{state.errors.phone}</span>}
       </label>
       <label className="text-sm">
         Email
         <input name="email" type="email" autoComplete="email" className={field} />
-        {state.errors?.email && <span className="text-xs text-red-700">{state.errors.email}</span>}
+        {state.errors?.email && <span className="text-xs text-red-400">{state.errors.email}</span>}
       </label>
       <label className="text-sm">
         Occasion
@@ -61,12 +61,12 @@ export default function EnquiryForm() {
       {/* Honeypot, hidden from people */}
       <input name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
       {state.status === "error" && !state.errors && (
-        <p className="text-sm text-red-700 sm:col-span-2">Something went wrong. Please try again.</p>
+        <p className="text-sm text-red-400 sm:col-span-2">Something went wrong. Please try again.</p>
       )}
       <button
         type="submit"
         disabled={pending}
-        className="bg-maroon px-8 py-3 text-sm uppercase tracking-[0.18em] text-white transition-colors hover:bg-maroon-light disabled:opacity-60 sm:col-span-2 sm:justify-self-start"
+        className="rounded-full bg-gold px-9 py-4 text-[13px] uppercase tracking-[0.22em] text-ink transition-colors hover:bg-white disabled:opacity-60 sm:col-span-2 sm:justify-self-start"
       >
         {pending ? "Sending…" : "Send enquiry"}
       </button>

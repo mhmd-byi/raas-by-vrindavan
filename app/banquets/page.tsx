@@ -32,7 +32,7 @@ export default function BanquetsPage() {
             <ul className="mt-8 space-y-3">
               {features.map((f) => (
                 <li key={f} className="flex gap-3">
-                  <span className="mt-2 h-1.5 w-1.5 shrink-0 bg-gold" aria-hidden="true" />
+                  <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rotate-45 bg-gold" aria-hidden="true" />
                   {f}
                 </li>
               ))}
@@ -42,7 +42,7 @@ export default function BanquetsPage() {
         </div>
       </Section>
 
-      <Section tone="sand">
+      <Section tone="surface">
         <Heading center eyebrow="Under the stars" title="The poolside party area" />
         <div className="mt-10 grid gap-6 md:grid-cols-2">
           <Photo src={img.poolNight} alt="Poolside at night" sizes="(min-width: 768px) 50vw, 100vw" />

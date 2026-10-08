@@ -4,7 +4,7 @@ import { footerNav, nav, site } from "@/lib/site";
 
 export default function Footer() {
   return (
-    <footer className="bg-ink text-white/75">
+    <footer className="border-t border-white/10 bg-ink text-white/75">
       <div className="mx-auto grid max-w-7xl gap-10 px-5 py-14 md:grid-cols-3 lg:px-8">
         <div>
           <Image src="/images/Raas-logo.png" alt="Raas by Vrindavan" width={120} height={71} />

@@ -24,17 +24,17 @@ export default function ContactPage() {
             </address>
             <ul className="mt-6 space-y-2">
               <li>
-                <a href={site.phoneHref} className="text-maroon underline underline-offset-4">
+                <a href={site.phoneHref} className="text-gold underline underline-offset-4">
                   {site.phone}
                 </a>
               </li>
               <li>
-                <a href={site.whatsappHref} target="_blank" rel="noopener noreferrer" className="text-maroon underline underline-offset-4">
+                <a href={site.whatsappHref} target="_blank" rel="noopener noreferrer" className="text-gold underline underline-offset-4">
                   Chat on WhatsApp
                 </a>
               </li>
               <li>
-                <a href={`mailto:${site.email}`} className="text-maroon underline underline-offset-4">
+                <a href={`mailto:${site.email}`} className="text-gold underline underline-offset-4">
                   {site.email}
                 </a>
               </li>

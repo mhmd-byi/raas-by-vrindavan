@@ -29,8 +29,8 @@ export default function Gallery() {
             type="button"
             aria-pressed={c === cat}
             onClick={() => setCat(c)}
-            className={`px-5 py-2 text-sm uppercase tracking-[0.18em] transition-colors ${
-              c === cat ? "bg-maroon text-white" : "border border-maroon/30 hover:border-maroon"
+            className={`rounded-full px-6 py-2.5 text-[13px] uppercase tracking-[0.22em] transition-colors ${
+              c === cat ? "bg-gold text-ink" : "border border-white/20 text-white/80 hover:border-gold hover:text-gold"
             }`}
           >
             {c}
@@ -41,13 +41,13 @@ export default function Gallery() {
       <ul className="mt-10 grid grid-cols-2 gap-3 md:grid-cols-3 lg:gap-4">
         {items.map((g, i) => (
           <li key={g.src}>
-            <button type="button" onClick={() => open(i)} className="group relative block aspect-[3/2] w-full overflow-hidden bg-sand">
+            <button type="button" onClick={() => open(i)} className="group relative block aspect-[3/2] w-full overflow-hidden bg-surface">
               <Image
                 src={g.src}
                 alt={g.alt}
                 fill
                 sizes="(min-width: 768px) 33vw, 50vw"
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
               />
             </button>
           </li>

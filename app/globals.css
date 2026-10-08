@@ -1,26 +1,23 @@
 @import "tailwindcss";
 
 :root {
-  --background: #faf5ea;
-  --foreground: #2a1a17;
+  --background: #0b0607;
+  --foreground: #f1e8d6;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-ink: #1d0f10;
+  --color-ink: #0b0607;
+  --color-surface: #150d0e;
+  --color-surface-2: #1f1415;
   --color-maroon: #5a1420;
   --color-maroon-light: #7a1f2e;
-  --color-gold: #c9a24b;
-  --color-gold-dark: #8f6f23;
-  --color-ivory: #faf5ea;
-  --color-sand: #efe6d3;
+  --color-gold: #d4af5f;
+  --color-gold-dark: #a8863a;
+  --color-ivory: #f1e8d6;
   --font-sans: var(--font-body);
   --font-display: var(--font-display);
-}
-
-html {
-  scroll-behavior: smooth;
 }
 
 body {
@@ -37,8 +34,19 @@ h3 {
   line-height: 1.1;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
+@keyframes fadein {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+.marquee { animation: marquee 40s linear infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee { animation: none; }
+}
+
+::selection { background: var(--color-gold); color: var(--color-ink); }

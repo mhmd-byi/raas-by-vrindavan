@@ -1,6 +1,10 @@
-import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
+import MagneticLink from "@/components/fx/MagneticLink";
+import ParallaxImage from "@/components/fx/ParallaxImage";
+import Reveal from "@/components/fx/Reveal";
+import SplitText from "@/components/fx/SplitText";
+import PageHeroFrame from "@/components/fx/PageHeroFrame";
 
 export function PageHero({
   eyebrow,
@@ -14,30 +18,26 @@ export function PageHero({
   alt: string;
 }) {
   return (
-    <section className="relative flex h-[46svh] min-h-[320px] items-end overflow-hidden bg-ink">
-      <Image src={image} alt={alt} fill priority sizes="100vw" className="object-cover" />
-      <div className="absolute inset-0 bg-gradient-to-t from-ink/85 to-ink/20" />
-      <div className="relative mx-auto w-full max-w-7xl px-5 pb-12 lg:px-8">
-        <p className="text-xs uppercase tracking-[0.35em] text-gold">{eyebrow}</p>
-        <h1 className="mt-2 text-5xl text-white sm:text-6xl">{title}</h1>
-      </div>
-    </section>
+    <PageHeroFrame image={image} alt={alt}>
+      <p className="text-xs uppercase tracking-[0.4em] text-gold">{eyebrow}</p>
+      <SplitText as="h1" text={title} delay={0.2} className="mt-3 text-6xl text-white sm:text-8xl" />
+    </PageHeroFrame>
   );
 }
 
 export function Section({
   children,
-  tone = "light",
+  tone = "base",
   className = "",
 }: {
   children: ReactNode;
-  tone?: "light" | "sand" | "dark";
+  tone?: "base" | "surface";
   className?: string;
 }) {
-  const bg = { light: "bg-ivory", sand: "bg-sand", dark: "bg-ink text-white" }[tone];
+  const bg = tone === "surface" ? "bg-surface" : "bg-background";
   return (
     <section className={`${bg} ${className}`}>
-      <div className="mx-auto max-w-7xl px-5 py-16 lg:px-8 lg:py-24">{children}</div>
+      <div className="mx-auto max-w-[1400px] px-5 py-20 lg:px-10 lg:py-32">{children}</div>
     </section>
   );
 }
@@ -54,10 +54,18 @@ export function Heading({
   center?: boolean;
 }) {
   return (
-    <div className={center ? "mx-auto max-w-2xl text-center" : "max-w-2xl"}>
-      {eyebrow && <p className="text-xs uppercase tracking-[0.35em] text-gold-dark">{eyebrow}</p>}
-      <h2 className="mt-3 text-4xl sm:text-5xl">{title}</h2>
-      {children && <p className="mt-5 leading-relaxed opacity-80">{children}</p>}
+    <div className={center ? "mx-auto max-w-3xl text-center" : "max-w-2xl"}>
+      {eyebrow && (
+        <Reveal>
+          <p className="text-xs uppercase tracking-[0.4em] text-gold">{eyebrow}</p>
+        </Reveal>
+      )}
+      <SplitText as="h2" inView text={title} className="mt-4 text-4xl sm:text-6xl" />
+      {children && (
+        <Reveal delay={0.2}>
+          <p className="mt-6 text-lg leading-relaxed text-white/65">{children}</p>
+        </Reveal>
+      )}
     </div>
   );
 }
@@ -65,20 +73,31 @@ export function Heading({
 export function ButtonLink({
   href,
   children,
-  variant = "maroon",
+  variant = "gold",
 }: {
   href: string;
   children: ReactNode;
-  variant?: "maroon" | "gold" | "outline";
+  variant?: "gold" | "outline";
 }) {
-  const styles = {
-    maroon: "bg-maroon text-white hover:bg-maroon-light",
-    gold: "bg-gold text-ink hover:bg-white",
-    outline: "border border-maroon text-maroon hover:bg-maroon hover:text-white",
-  }[variant];
+  const styles =
+    variant === "gold"
+      ? "bg-gold text-ink hover:bg-white"
+      : "border border-white/30 text-white hover:border-gold hover:text-gold";
   return (
-    <Link href={href} className={`inline-block px-8 py-3 text-sm uppercase tracking-[0.18em] transition-colors ${styles}`}>
+    <MagneticLink
+      href={href}
+      className={`inline-block rounded-full px-9 py-4 text-[13px] uppercase tracking-[0.22em] transition-colors ${styles}`}
+    >
       {children}
+    </MagneticLink>
+  );
+}
+
+export function TextLink({ href, children }: { href: string; children: ReactNode }) {
+  return (
+    <Link href={href} className="group inline-flex items-center gap-3 text-sm uppercase tracking-[0.22em] text-gold">
+      {children}
+      <span className="transition-transform duration-500 group-hover:translate-x-2">→</span>
     </Link>
   );
 }
@@ -87,31 +106,30 @@ export function Photo({
   src,
   alt,
   className = "",
-  sizes = "(min-width: 1024px) 50vw, 100vw",
+  sizes,
 }: {
   src: string;
   alt: string;
   className?: string;
   sizes?: string;
 }) {
-  return (
-    <div className={`relative aspect-[3/2] overflow-hidden bg-sand ${className}`}>
-      <Image src={src} alt={alt} fill sizes={sizes} className="object-cover" />
-    </div>
-  );
+  return <ParallaxImage src={src} alt={alt} sizes={sizes} className={`aspect-[4/3] ${className}`} />;
 }
 
 export function CtaBand() {
   return (
-    <section className="bg-maroon text-white">
-      <div className="mx-auto flex max-w-7xl flex-col items-center gap-6 px-5 py-14 text-center lg:px-8">
-        <h2 className="text-4xl sm:text-5xl">Planning something unforgettable?</h2>
-        <p className="max-w-xl text-white/80">
-          Tell us about your occasion and our team will help you shape it.
-        </p>
-        <ButtonLink href="/contact-us" variant="gold">
-          Enquire Now
-        </ButtonLink>
+    <section className="relative overflow-hidden border-t border-white/10 bg-ink">
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[900px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-maroon/40 blur-[120px]" />
+      <div className="relative mx-auto flex max-w-[1400px] flex-col items-center gap-8 px-5 py-28 text-center lg:px-10 lg:py-36">
+        <SplitText as="h2" inView text="Planning something unforgettable?" className="max-w-4xl text-5xl sm:text-7xl" />
+        <Reveal delay={0.2}>
+          <p className="max-w-xl text-lg text-white/65">
+            Tell us about your occasion and our team will help you shape it.
+          </p>
+        </Reveal>
+        <Reveal delay={0.3}>
+          <ButtonLink href="/contact-us">Enquire Now</ButtonLink>
+        </Reveal>
       </div>
     </section>
   );

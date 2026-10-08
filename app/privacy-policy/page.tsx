@@ -37,12 +37,12 @@ const sections = [
 export default function PrivacyPage() {
   return (
     <Section>
-      <div className="mx-auto max-w-3xl">
+      <div className="mx-auto max-w-3xl pt-16">
         <h1 className="text-5xl">Privacy Policy</h1>
         {sections.map((s) => (
           <div key={s.title} className="mt-8">
             <h2 className="text-3xl">{s.title}</h2>
-            <p className="mt-2 leading-relaxed opacity-85">{s.text}</p>
+            <p className="mt-2 leading-relaxed text-white/70">{s.text}</p>
           </div>
         ))}
       </div>

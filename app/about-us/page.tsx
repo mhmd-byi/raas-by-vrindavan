@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Reveal from "@/components/fx/Reveal";
 import { CtaBand, Heading, PageHero, Photo, Section } from "@/components/ui";
 import { img, pillars } from "@/lib/site";
 
@@ -24,13 +25,13 @@ export default function AboutPage() {
         </div>
       </Section>
 
-      <Section tone="dark">
+      <Section tone="surface">
         <div className="grid gap-10 md:grid-cols-3">
-          {pillars.map((p) => (
-            <div key={p.title} className="border-t border-gold/60 pt-6">
+          {pillars.map((p, i) => (
+            <Reveal key={p.title} delay={i * 0.12} className="border-t border-gold/60 pt-6">
               <h2 className="text-3xl text-gold">{p.title}</h2>
-              <p className="mt-3 leading-relaxed text-white/75">{p.text}</p>
-            </div>
+              <p className="mt-3 leading-relaxed text-white/65">{p.text}</p>
+            </Reveal>
           ))}
         </div>
       </Section>

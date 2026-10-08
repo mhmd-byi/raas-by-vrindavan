@@ -14,7 +14,7 @@ export default function CareersPage() {
       <Section>
         <Heading eyebrow="Work with us" title="Be part of the Raas family">
           We are always glad to hear from people who care about hospitality. Send your resume to{" "}
-          <a href={`mailto:${site.email}?subject=Job%20application`} className="text-maroon underline underline-offset-4">
+          <a href={`mailto:${site.email}?subject=Job%20application`} className="text-gold underline underline-offset-4">
             {site.email}
           </a>{" "}
           or call {site.phone}.

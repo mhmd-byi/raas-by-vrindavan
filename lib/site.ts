@@ -50,34 +50,6 @@ export const img = {
   suite: "/images/AG7_9285.jpg",
 };
 
-export const heroSlides = [
-  {
-    title: "Rendezvous with the memories of a lifetime",
-    image: img.poolNight,
-    alt: "The Raas by Vrindavan poolside entrance glowing at night",
-  },
-  {
-    title: "Exquisite area for poolside celebrations",
-    image: img.poolCourtyard,
-    alt: "Poolside courtyard with seating at night",
-  },
-  {
-    title: "An epiphany of luxury and grandeur",
-    image: img.lobby,
-    alt: "Lobby lounge with chandeliers and onyx panelling",
-  },
-  {
-    title: "Spectacular banquets for fine dining experiences",
-    image: img.banquet,
-    alt: "Banquet hall with chandeliers and gold drapes",
-  },
-  {
-    title: "Recreational space for leisure times",
-    image: img.entrance,
-    alt: "Resort entrance walkway at night",
-  },
-];
-
 export type Room = {
   slug: string;
   name: string;
