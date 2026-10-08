@@ -17,7 +17,7 @@ export default function Hero() {
   return (
     <section ref={ref} className="relative flex min-h-svh items-end overflow-hidden bg-ink">
       <HeroBackdrop src={img.poolNight} alt="The Raas by Vrindavan poolside entrance glowing at night" />
-      <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/30 to-ink/50" />
+      <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-transparent to-ink/25" />
 
       <motion.div
         style={{ y, opacity, scale }}
