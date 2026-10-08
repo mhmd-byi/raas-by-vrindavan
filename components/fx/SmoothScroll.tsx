@@ -13,7 +13,12 @@ export default function SmoothScroll() {
       raf = requestAnimationFrame(loop);
     });
 
+    // Page height changes after load (images, pinned-section measurements), so keep Lenis' scroll limit in sync.
+    const ro = new ResizeObserver(() => lenis.resize());
+    ro.observe(document.body);
+
     return () => {
+      ro.disconnect();
       cancelAnimationFrame(raf);
       lenis.destroy();
     };
