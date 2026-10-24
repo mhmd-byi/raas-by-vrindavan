@@ -11,7 +11,7 @@ export const site = {
   phoneHref: "tel:+919826037001",
   whatsappHref:
     "https://wa.me/919826037001?text=Hello%20Raas%20by%20Vrindavan%2C%20I%27d%20like%20to%20make%20an%20enquiry.",
-  email: "rasbyvrindavan@gmail.com",
+  email: "raasvrindavan588@gmail.com",
   address: [
     "Californea Citi",
     "Near LNCT Medical College & Sewa Kunj Hospital",
@@ -109,14 +109,14 @@ export const rooms: Room[] = [
   {
     slug: "premium",
     name: "Premium",
-    image: "/images/premium-lounge.jpg",
-    alt: "Premium villa lounge with sofas and a wooden staircase",
+    image: "/images/deluxe-bed-2.jpg",
+    alt: "Premium room with a palm-print headboard wall and arched bed",
     blurb:
       "Generous space for families and groups, with a large lounge, a wooden staircase and refined bathrooms.",
     gallery: [
+      { src: "/images/deluxe-bed-2.jpg", alt: "Premium room with a palm-print headboard wall" },
       { src: "/images/premium-lounge.jpg", alt: "Premium lounge with sofas and a wooden staircase" },
       { src: "/images/premium-bath.jpg", alt: "Bathtub against a slate-tiled wall" },
-      { src: "/images/premium-stair.jpg", alt: "Wooden staircase in the premium villa lounge" },
     ],
   },
   {
@@ -139,8 +139,8 @@ export const rooms: Room[] = [
     blurb: "A calm room with a classic arched headboard, warm lighting, a work desk and a cosy chair.",
     gallery: [
       { src: "/images/deluxe-bed.jpg", alt: "Deluxe room with an arched headboard" },
-      { src: "/images/deluxe-bed-2.jpg", alt: "Deluxe room with a palm-print headboard wall" },
       { src: "/images/deluxe-desk.jpg", alt: "Deluxe room with TV and writing desk" },
+      { src: img.bath, alt: "Deluxe bathroom with a glass shower and patterned tiles" },
     ],
   },
   {
