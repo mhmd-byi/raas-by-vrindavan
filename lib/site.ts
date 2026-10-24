@@ -2,15 +2,20 @@ export const site = {
   name: "Raas by Vrindavan",
   url: "https://raasbyvrindavan.com",
   tagline: "A splendid destination for marvelous celebrations",
+  phones: [
+    { number: "+91 98260 37001", href: "tel:+919826037001" },
+    { number: "+91 98260 56001", href: "tel:+919826056001" },
+  ],
+  // Primary number, for single-button spots such as the floating Call button.
   phone: "+91 98260 37001",
   phoneHref: "tel:+919826037001",
   whatsappHref:
     "https://wa.me/919826037001?text=Hello%20Raas%20by%20Vrindavan%2C%20I%27d%20like%20to%20make%20an%20enquiry.",
   email: "rasbyvrindavan@gmail.com",
   address: [
-    "F-3, Raas by Vrindavan",
-    "Kanadiya Road, California City",
-    "Indore, Madhya Pradesh 452016",
+    "Californea Citi",
+    "Near LNCT Medical College & Sewa Kunj Hospital",
+    "Kanadiya Road, Indore, MP - 452016",
   ],
   facebook: "https://www.facebook.com/vrindavanfoodvilla/",
   instagram: "https://instagram.com/raasbyvrindavan?utm_medium=copy_link",

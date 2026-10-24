@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 const steps = [
   { title: "Ask", text: "Request the in-room dining menu from reception when you check in, or message us beforehand." },
-  { title: "Order", text: `Call ${site.phone} or send us a WhatsApp message with what you would like.` },
+  { title: "Order", text: `Call ${site.phones.map((p) => p.number).join(" / ")} or send us a WhatsApp message with what you would like.` },
   { title: "Enjoy", text: "Your order is brought to your room, so you can eat in comfort at your own pace." },
 ];
 

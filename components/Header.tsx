@@ -119,8 +119,12 @@ export default function Header() {
                 </li>
               ))}
             </ul>
-            <p className="mt-10 text-sm text-white/50">
-              <a href={site.phoneHref}>{site.phone}</a>
+            <p className="mt-10 space-y-1 text-sm text-white/50">
+              {site.phones.map((p) => (
+                <a key={p.href} href={p.href} className="block">
+                  {p.number}
+                </a>
+              ))}
             </p>
           </motion.nav>
         )}

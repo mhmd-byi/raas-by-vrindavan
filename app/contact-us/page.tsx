@@ -7,7 +7,7 @@ import { img, map, site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact Us & Book Now",
-  description: "Enquire about weddings, events, rooms and banquets at Raas by Vrindavan, Kanadiya Road, Indore. Call +91 98260 37001.",
+  description: "Enquire about weddings, events, rooms and banquets at Raas by Vrindavan, Kanadiya Road, Indore. Call +91 98260 37001 or +91 98260 56001.",
 };
 
 export default function ContactPage() {
@@ -25,11 +25,13 @@ export default function ContactPage() {
               ))}
             </address>
             <ul className="mt-6 space-y-2">
-              <li>
-                <a href={site.phoneHref} className="text-gold underline underline-offset-4">
-                  {site.phone}
-                </a>
-              </li>
+              {site.phones.map((p) => (
+                <li key={p.href}>
+                  <a href={p.href} className="text-gold underline underline-offset-4">
+                    {p.number}
+                  </a>
+                </li>
+              ))}
               <li>
                 <a href={site.whatsappHref} target="_blank" rel="noopener noreferrer" className="text-gold underline underline-offset-4">
                   Chat on WhatsApp

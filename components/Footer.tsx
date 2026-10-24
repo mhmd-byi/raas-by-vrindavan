@@ -33,11 +33,14 @@ export default function Footer() {
             {site.address.map((line) => (
               <p key={line}>{line}</p>
             ))}
-            <p className="pt-2">
-              <a href={site.phoneHref} className="hover:text-gold">
-                Call: {site.phone}
-              </a>
-            </p>
+            {site.phones.map((p, i) => (
+              <p key={p.href} className={i === 0 ? "pt-2" : ""}>
+                <a href={p.href} className="hover:text-gold">
+                  {i === 0 ? "Call: " : ""}
+                  {p.number}
+                </a>
+              </p>
+            ))}
             <p>
               <a href={`mailto:${site.email}`} className="hover:text-gold">
                 {site.email}

@@ -17,7 +17,7 @@ export default function CareersPage() {
           <a href={`mailto:${site.email}?subject=Job%20application`} className="text-gold underline underline-offset-4">
             {site.email}
           </a>{" "}
-          or call {site.phone}.
+          or call {site.phones.map((p) => p.number).join(" / ")}.
         </Heading>
       </Section>
     </>
