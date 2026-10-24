@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     template: "%s | Raas by Vrindavan",
   },
   description:
-    "Raas by Vrindavan is a luxury resort in Indore for weddings, corporate events and celebrations, with elegant rooms, royal banquet halls, a poolside party area and a multi-cuisine restaurant.",
+    "Raas by Vrindavan is a luxury resort in Indore for weddings, corporate events and celebrations, with elegant rooms, royal banquet halls, a poolside party area and in-room dining.",
   openGraph: {
     type: "website",
     siteName: site.name,

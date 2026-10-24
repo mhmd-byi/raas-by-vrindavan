@@ -8,14 +8,14 @@ import { img } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Property",
   description:
-    "Explore the Raas by Vrindavan property in Indore: spacious rooms, royal banquets, a multi-cuisine restaurant and a poolside party area.",
+    "Explore the Raas by Vrindavan property in Indore: spacious rooms, royal banquets, in-room dining and a poolside party area.",
 };
 
 const amenities = [
-  { title: "Spacious Rooms", text: "Suites and rooms with Turkish bath-inspired showers and luxuriously snug furniture.", href: "/rooms", image: img.roomMirror, alt: "Deluxe room" },
-  { title: "Royal Banquets", text: "Palatial halls with high ceilings, chandeliers and a sophisticated sound system.", href: "/banquets", image: img.banquetStairs, alt: "Banquet hall" },
-  { title: "Multi-cuisine Restaurant", text: "Menus from chefs who have refined their craft over decades.", href: "/restaurants", image: img.foodVilla, alt: "Vrindavan Food Villa" },
-  { title: "Pool-side Party Area", text: "An open-air setting for celebrations under the stars.", href: "/banquets", image: img.poolCourtyard, alt: "Poolside courtyard" },
+  { title: "Spacious Rooms", text: "Suites and rooms with Turkish bath-inspired showers and luxuriously snug furniture.", href: "/rooms", image: "/images/deluxe-bed.jpg", alt: "Deluxe room" },
+  { title: "Royal Banquets", text: "Raas Mahal and more: palatial halls with high ceilings, chandeliers and a sophisticated sound system.", href: "/banquets", image: img.mahal1, alt: "Raas Mahal banquet hall" },
+  { title: "In-Room Dining", text: "Meals, snacks and drinks served in the comfort of your room.", href: "/in-room-dining", image: img.diningSpread, alt: "A spread of snacks and desserts" },
+  { title: "Pool-side Party Area", text: "An open-air setting for celebrations under the stars.", href: "/banquets", image: img.poolDecor, alt: "Poolside decorated for an event" },
 ];
 
 export default function PropertyPage() {
@@ -25,7 +25,7 @@ export default function PropertyPage() {
 
       <Section>
         <div className="grid items-center gap-14 lg:grid-cols-2">
-          <Heading eyebrow="An architectural marvel" title="Refined luxuries, fine dining, one address">
+          <Heading eyebrow="An architectural marvel" title="Refined luxuries, grand celebrations, one address">
             Every momentous day necessitates an indelible celebration, and Raas by Vrindavan is a
             destination designed for exactly that. We have customised everything to create an
             unmatched experience for you and your guests.

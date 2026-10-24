@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { footerNav, nav, site } from "@/lib/site";
+import { footerNav, map, nav, site } from "@/lib/site";
 
 export default function Footer() {
   return (
@@ -41,6 +41,11 @@ export default function Footer() {
             <p>
               <a href={`mailto:${site.email}`} className="hover:text-gold">
                 {site.email}
+              </a>
+            </p>
+            <p>
+              <a href={map.directionsUrl} target="_blank" rel="noopener noreferrer" className="hover:text-gold">
+                Get directions
               </a>
             </p>
           </address>

@@ -9,10 +9,10 @@ import { ButtonLink, CtaBand, Heading, Section } from "@/components/ui";
 import { img, pillars, rooms, testimonials } from "@/lib/site";
 
 const offerings = [
-  { title: "Luxurious Banquet Halls", blurb: "Three palatial halls for weddings, receptions and corporate evenings.", href: "/banquets", image: img.banquet, alt: "Banquet hall with chandeliers" },
-  { title: "Spacious Rooms", blurb: "Distinctly designed rooms and suites with Turkish bath-inspired showers.", href: "/rooms", image: img.roomMirror, alt: "Deluxe guest room" },
-  { title: "Poolside Pavilion", blurb: "An open-air stage for celebrations under the night sky.", href: "/property", image: img.poolCourtyard, alt: "Poolside courtyard at night" },
-  { title: "Fine Dining", blurb: "Multi-cuisine plates from chefs who have refined their craft for decades.", href: "/restaurants", image: img.foodVilla, alt: "Vrindavan Food Villa at night" },
+  { title: "Luxurious Banquet Halls", blurb: "Raas Mahal and more, for weddings, receptions and corporate evenings.", href: "/banquets", image: img.banquet, alt: "Banquet hall with chandeliers" },
+  { title: "Spacious Rooms", blurb: "Distinctly designed rooms and suites with Turkish bath-inspired showers.", href: "/rooms", image: "/images/deluxe-bed.jpg", alt: "Deluxe guest room" },
+  { title: "Poolside Pavilion", blurb: "An open-air stage for celebrations under the night sky.", href: "/property", image: img.poolDecor, alt: "Poolside decorated for an event" },
+  { title: "In-Room Dining", blurb: "Meals, snacks and drinks brought to your room, in the comfort of your stay.", href: "/in-room-dining", image: img.diningSpread, alt: "A spread of snacks, paneer and a brownie sundae" },
 ];
 
 const statement =

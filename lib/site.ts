@@ -21,7 +21,7 @@ export const nav = [
   { href: "/property", label: "Property" },
   { href: "/rooms", label: "Rooms" },
   { href: "/banquets", label: "Banquets" },
-  { href: "/restaurants", label: "Restaurants" },
+  { href: "/in-room-dining", label: "In-Room Dining" },
   { href: "/gallery", label: "Gallery" },
 ];
 
@@ -32,6 +32,17 @@ export const footerNav = [
   { href: "/privacy-policy", label: "Privacy Policy" },
 ];
 
+// Location pin from the venue's own Google Maps listing.
+export const map = {
+  lat: 22.7463066,
+  lng: 75.9798624,
+  embed:
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1007.9748317494862!2d75.97986236161486!3d22.746306588856157!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3962e3cbd73df54f%3A0x9498841eb1cff211!2sRaas%20by%20Vrindavan!5e0!3m2!1sen!2sin!4v1640765182885!5m2!1sen!2sin",
+  placeUrl: "https://maps.google.com/?cid=10707453381440434705",
+  directionsUrl: "https://www.google.com/maps/dir/?api=1&destination=22.7463066,75.9798624",
+  qr: "/images/raas-location-qr.svg",
+};
+
 export const img = {
   poolNight: "/images/AG7_9274.jpg",
   poolCourtyard: "/images/AG7_9324.jpg",
@@ -40,14 +51,31 @@ export const img = {
   banquet: "/images/AG7_9315.jpg",
   banquetStairs: "/images/AG7_9316.jpg",
   corridor: "/images/AG7_9300.jpg",
-  foodVilla: "/images/AG7_9116.jpg",
-  roomPlatform: "/images/AG7_9240.jpg",
-  roomMirror: "/images/AG7_9249.jpg",
-  roomCurtain: "/images/AG7_9255.jpg",
-  roomDesk: "/images/AG7_9259.jpg",
-  roomFan: "/images/AG7_9266.jpg",
-  lounge: "/images/AG7_9277.jpg",
-  suite: "/images/AG7_9285.jpg",
+  clubBedGold: "/images/AG7_9240.jpg",
+  clubBedTile: "/images/AG7_9249.jpg",
+  clubBedWood: "/images/AG7_9266.jpg",
+  aerialVillas: "/images/aerial-villas.jpg",
+  aerialLane: "/images/aerial-lane.jpg",
+  aerialLawn: "/images/aerial-lawn.jpg",
+  aerialLane2: "/images/aerial-lane-2.jpg",
+  villaGable: "/images/villa-gable.jpg",
+  villaFront: "/images/villa-front.jpg",
+  villaDusk: "/images/villa-dusk.jpg",
+  villaLounge: "/images/villa-lounge.jpg",
+  mahal1: "/images/mahal-1.jpg",
+  mahal2: "/images/mahal-2.jpg",
+  mahal3: "/images/mahal-3.jpg",
+  lawn: "/images/lawn.jpg",
+  hallFloral: "/images/hall-floral.jpg",
+  mandap: "/images/mandap.jpg",
+  poolDecor: "/images/pool-decor.jpg",
+  poolDecor2: "/images/pool-decor-2.jpg",
+  bath: "/images/bath-1.jpg",
+  diningSpread: "/images/dining-spread.jpg",
+  diningDrinks: "/images/dining-drinks.jpg",
+  diningWrap: "/images/dining-wrap.jpg",
+  diningPaneer: "/images/dining-paneer.jpg",
+  diningBrownie: "/images/dining-brownie.jpg",
 };
 
 export type Room = {
@@ -56,75 +84,119 @@ export type Room = {
   image: string;
   alt: string;
   blurb: string;
+  gallery: { src: string; alt: string }[];
 };
 
 export const rooms: Room[] = [
   {
-    slug: "presidential-suite",
-    name: "Presidential Suite",
-    image: img.suite,
-    alt: "Suite with padded headboard, timber ceiling and dressing area",
+    slug: "suite",
+    name: "Suite",
+    image: "/images/suite-bed.jpg",
+    alt: "Suite bedroom with a slatted timber ceiling and padded headboard",
     blurb:
-      "Our most generous stay: a restful bed beneath a slatted timber ceiling, with a mirrored dressing area just beyond.",
+      "A spacious suite with its own living area, a corner sofa and wall-mounted TV, and a bedroom beneath a slatted timber ceiling.",
+    gallery: [
+      { src: "/images/suite-bed.jpg", alt: "Suite bedroom with a slatted timber ceiling" },
+      { src: "/images/suite-living.jpg", alt: "Suite living area with a tan corner sofa" },
+      { src: "/images/suite-bed-2.jpg", alt: "Suite bed with padded headboard and bedside table" },
+    ],
   },
   {
-    slug: "family-suite",
-    name: "Family Suite",
-    image: img.lounge,
-    alt: "Suite living area with a large grey corner sofa",
+    slug: "premium",
+    name: "Premium",
+    image: "/images/premium-lounge.jpg",
+    alt: "Premium villa lounge with sofas and a wooden staircase",
     blurb:
-      "A sofa-lined sitting room and room to spread out, made for families sharing a celebration together.",
+      "Generous space for families and groups, with a large lounge, a wooden staircase and refined bathrooms.",
+    gallery: [
+      { src: "/images/premium-lounge.jpg", alt: "Premium lounge with sofas and a wooden staircase" },
+      { src: "/images/premium-bath.jpg", alt: "Bathtub against a slate-tiled wall" },
+      { src: "/images/premium-stair.jpg", alt: "Wooden staircase in the premium villa lounge" },
+    ],
   },
   {
-    slug: "deluxe-double-bed",
-    name: "Deluxe Double Bed",
-    image: img.roomMirror,
-    alt: "Deluxe room with quilted headboard and patterned tile floor",
-    blurb:
-      "A floating bed with a quilted golden headboard, a full-length mirror and a bold patterned floor.",
+    slug: "super-deluxe",
+    name: "Super Deluxe",
+    image: "/images/super-deluxe-bed.jpg",
+    alt: "Super deluxe room with yellow and grey geometric wall panels",
+    blurb: "A room with a separate sitting area, a blue sofa and bold yellow-and-grey accent walls.",
+    gallery: [
+      { src: "/images/super-deluxe-bed.jpg", alt: "Super deluxe bed with yellow geometric wall panels" },
+      { src: "/images/super-deluxe-lounge.jpg", alt: "Sitting area with a sofa and yellow stools" },
+      { src: "/images/super-deluxe-bed-2.jpg", alt: "Super deluxe room with a writing desk" },
+    ],
   },
   {
-    slug: "executive-room",
-    name: "Executive Room",
-    image: img.roomDesk,
-    alt: "Executive room with TV, writing desk and velvet chairs",
-    blurb:
-      "A work-ready room with a wall-mounted TV, writing desk, wardrobe and a mini fridge.",
+    slug: "deluxe",
+    name: "Deluxe",
+    image: "/images/deluxe-bed.jpg",
+    alt: "Deluxe room with an arched headboard and wooden bed",
+    blurb: "A calm room with a classic arched headboard, warm lighting, a work desk and a cosy chair.",
+    gallery: [
+      { src: "/images/deluxe-bed.jpg", alt: "Deluxe room with an arched headboard" },
+      { src: "/images/deluxe-bed-2.jpg", alt: "Deluxe room with a palm-print headboard wall" },
+      { src: "/images/deluxe-desk.jpg", alt: "Deluxe room with TV and writing desk" },
+    ],
   },
   {
-    slug: "club-house-room",
-    name: "Club House Room",
-    image: img.roomFan,
-    alt: "Club house room with timber ceiling and gold-accented wall",
-    blurb:
-      "A warm timber ceiling, rich drapes and a king-size bed for easy, unhurried stays.",
+    slug: "executive",
+    name: "Executive",
+    image: "/images/executive-bed.jpg",
+    alt: "Executive room with a tropical-print wall and timber ceiling",
+    blurb: "A work-ready room with a TV and desk, a tropical-print feature wall and a timber ceiling.",
+    gallery: [
+      { src: "/images/executive-bed.jpg", alt: "Executive room with a tropical-print wall" },
+      { src: "/images/executive-bed-2.jpg", alt: "Executive bed under a tropical mural" },
+      { src: "/images/executive-desk.jpg", alt: "Executive room with TV, desk and velvet chairs" },
+    ],
   },
   {
-    slug: "luxurious-stay",
-    name: "Luxurious Stay",
-    image: img.roomPlatform,
-    alt: "Room with a low platform bed and warm accent lighting",
-    blurb:
-      "A low platform bed with soft cove lighting, ideal for groups travelling together.",
+    slug: "club-rooms",
+    name: "Club Rooms",
+    image: img.clubBedTile,
+    alt: "Club room with a floating bed, gold quilted headboard and patterned tiles",
+    blurb: "A floating bed with a quilted golden headboard, soft cove lighting and a bold patterned floor.",
+    gallery: [
+      { src: img.clubBedTile, alt: "Club room with a floating bed and patterned tile floor" },
+      { src: img.clubBedGold, alt: "Club room with a low platform bed and gold headboard" },
+      { src: img.clubBedWood, alt: "Club room with a timber ceiling and gold-accented wall" },
+    ],
   },
 ];
 
 export const galleryItems = [
-  { src: img.poolNight, alt: "Poolside entrance at night", cat: "Property" },
-  { src: img.poolCourtyard, alt: "Poolside courtyard", cat: "Property" },
-  { src: img.entrance, alt: "Resort entrance walkway", cat: "Property" },
-  { src: img.corridor, alt: "Guest-room corridor", cat: "Property" },
-  { src: img.foodVilla, alt: "Vrindavan Food Villa", cat: "Dining" },
-  { src: img.lobby, alt: "Lobby lounge", cat: "Lobby" },
-  { src: img.banquet, alt: "Banquet hall", cat: "Banquets" },
-  { src: img.banquetStairs, alt: "Banquet hall and staircase", cat: "Banquets" },
-  { src: img.suite, alt: "Suite", cat: "Rooms" },
-  { src: img.lounge, alt: "Suite lounge", cat: "Rooms" },
-  { src: img.roomMirror, alt: "Deluxe room", cat: "Rooms" },
-  { src: img.roomDesk, alt: "Executive room", cat: "Rooms" },
-  { src: img.roomCurtain, alt: "Room with drapes", cat: "Rooms" },
-  { src: img.roomFan, alt: "Club house room", cat: "Rooms" },
-  { src: img.roomPlatform, alt: "Platform bed room", cat: "Rooms" },
+  { src: img.aerialVillas, alt: "Aerial view of the gabled villas", cat: "Property" },
+  { src: img.aerialLane, alt: "Aerial view of the villa lane", cat: "Property" },
+  { src: img.aerialLawn, alt: "Aerial view of the lawn and banquet roof", cat: "Property" },
+  { src: img.aerialLane2, alt: "Aerial view of numbered villa entrances", cat: "Property" },
+  { src: img.villaFront, alt: "Villa entrance lit at dusk", cat: "Property" },
+  { src: img.villaDusk, alt: "Gabled villas at dusk", cat: "Property" },
+  { src: img.villaGable, alt: "Timber-clad villa gable", cat: "Property" },
+  { src: img.entrance, alt: "Resort entrance walkway at night", cat: "Property" },
+  { src: img.poolNight, alt: "Poolside entrance at night", cat: "Poolside" },
+  { src: img.poolCourtyard, alt: "Poolside courtyard at night", cat: "Poolside" },
+  { src: img.poolDecor, alt: "Poolside decorated for an event", cat: "Poolside" },
+  { src: img.poolDecor2, alt: "Poolside canopy and decks at night", cat: "Poolside" },
+  { src: img.mahal1, alt: "Raas Mahal banquet hall", cat: "Banquets" },
+  { src: img.mahal2, alt: "Raas Mahal with a crystal chandelier", cat: "Banquets" },
+  { src: img.mahal3, alt: "Raas Mahal seating on red carpet", cat: "Banquets" },
+  { src: img.hallFloral, alt: "Hall with floral seating", cat: "Banquets" },
+  { src: img.mandap, alt: "Wedding mandap entrance with elephant statues", cat: "Banquets" },
+  { src: img.lawn, alt: "Wedding lawn with a stage", cat: "Banquets" },
+  { src: img.banquet, alt: "Hall with chandeliers and gold drapes", cat: "Banquets" },
+  { src: img.lobby, alt: "Lobby lounge with chandeliers", cat: "Lobby" },
+  { src: img.villaLounge, alt: "Villa lounge with a wooden staircase", cat: "Lobby" },
+  { src: img.corridor, alt: "Guest-room corridor", cat: "Lobby" },
+  { src: "/images/suite-bed.jpg", alt: "Suite bedroom", cat: "Rooms" },
+  { src: "/images/suite-living.jpg", alt: "Suite living area", cat: "Rooms" },
+  { src: "/images/super-deluxe-bed.jpg", alt: "Super deluxe room", cat: "Rooms" },
+  { src: "/images/deluxe-bed.jpg", alt: "Deluxe room", cat: "Rooms" },
+  { src: "/images/executive-bed.jpg", alt: "Executive room", cat: "Rooms" },
+  { src: img.clubBedTile, alt: "Club room", cat: "Rooms" },
+  { src: img.bath, alt: "Bathroom with a glass shower", cat: "Rooms" },
+  { src: img.diningSpread, alt: "A spread of snacks and desserts", cat: "Dining" },
+  { src: img.diningDrinks, alt: "Fresh mocktails", cat: "Dining" },
+  { src: img.diningPaneer, alt: "Grilled paneer tikka", cat: "Dining" },
 ];
 
 export const testimonials = [
