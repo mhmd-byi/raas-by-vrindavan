@@ -17,8 +17,8 @@ export default function RoomsPage() {
 
       <Section>
         <Heading center eyebrow="Stay with us" title="Six ways to stay">
-          From suites with their own living areas to cosy club rooms, every room is designed for a
-          comfortable stay, with the pool and banquets steps away.
+          With 130+ rooms across six categories, from suites with their own living areas to cosy club
+          rooms, every stay is designed for comfort, with the pool and banquets steps away.
         </Heading>
       </Section>
 

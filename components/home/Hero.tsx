@@ -60,7 +60,7 @@ export default function Hero() {
             View Gallery
           </Link>
           <p className="max-w-sm text-sm leading-relaxed text-white/60">
-            Royal banquets, spacious rooms and a poolside made for celebrations.
+            Royal banquets, 130+ rooms and a poolside made for celebrations.
           </p>
         </motion.div>
       </motion.div>
