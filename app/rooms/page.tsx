@@ -7,7 +7,7 @@ import { rooms } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Rooms & Suites",
   description:
-    "Suite, premium, super deluxe, deluxe, executive and club rooms at Raas by Vrindavan, Indore.",
+    "Suite, premium, super deluxe, deluxe villa, deluxe cottage, executive and standard rooms at Raas by Vrindavan, Indore.",
 };
 
 export default function RoomsPage() {
@@ -16,9 +16,9 @@ export default function RoomsPage() {
       <PageHero eyebrow="Luxurious stay" title="Rooms & Suites" image={rooms[0].image} alt={rooms[0].alt} />
 
       <Section>
-        <Heading center eyebrow="Stay with us" title="Six ways to stay">
-          With 130+ rooms across six categories, from suites with their own living areas to cosy club
-          rooms, every stay is designed for comfort, with the pool and banquets steps away.
+        <Heading center eyebrow="Stay with us" title="Seven ways to stay">
+          With 130+ rooms across seven categories, from suites with their own living areas to well-appointed
+          standard rooms, every stay is designed for comfort, with the pool and banquets steps away.
         </Heading>
       </Section>
 

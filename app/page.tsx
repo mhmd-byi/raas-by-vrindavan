@@ -10,7 +10,7 @@ import { img, pillars, rooms, testimonials } from "@/lib/site";
 
 const offerings = [
   { title: "Luxurious Banquet Halls", blurb: "Raas Mahal and more, for weddings, receptions and corporate evenings.", href: "/banquets", image: img.banquet, alt: "Banquet hall with chandeliers" },
-  { title: "Spacious Rooms", blurb: "130+ distinctly designed rooms and suites with Turkish bath-inspired showers.", href: "/rooms", image: "/images/deluxe-bed.jpg", alt: "Deluxe guest room" },
+  { title: "Spacious Rooms", blurb: "130+ distinctly designed rooms and suites with Turkish bath-inspired showers.", href: "/rooms", image: "/images/deluxe-villa-1.jpg", alt: "Deluxe guest room" },
   { title: "Poolside Pavilion", blurb: "An open-air stage for celebrations under the night sky.", href: "/property", image: img.poolDecor, alt: "Poolside decorated for an event" },
   { title: "In-Room Dining", blurb: "Meals, snacks and drinks brought to your room, in the comfort of your stay.", href: "/in-room-dining", image: img.diningSpread, alt: "A spread of snacks, paneer and a brownie sundae" },
 ];
@@ -50,7 +50,7 @@ export default function Home() {
           </Heading>
         </div>
         <div className="mt-16">
-          <RoomStack rooms={rooms.slice(0, 4)} />
+          <RoomStack rooms={rooms} />
         </div>
       </section>
 

@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 };
 
 const amenities = [
-  { title: "Spacious Rooms", text: "130+ suites and rooms with Turkish bath-inspired showers and luxuriously snug furniture.", href: "/rooms", image: "/images/deluxe-bed.jpg", alt: "Deluxe room" },
+  { title: "Spacious Rooms", text: "130+ suites and rooms with Turkish bath-inspired showers and luxuriously snug furniture.", href: "/rooms", image: "/images/deluxe-villa-1.jpg", alt: "Deluxe room" },
   { title: "Royal Banquets", text: "Raas Mahal and more: palatial halls with high ceilings, chandeliers and a sophisticated sound system.", href: "/banquets", image: img.mahal1, alt: "Raas Mahal banquet hall" },
   { title: "In-Room Dining", text: "Meals, snacks and drinks served in the comfort of your room.", href: "/in-room-dining", image: img.diningSpread, alt: "A spread of snacks and desserts" },
   { title: "Pool-side Party Area", text: "An open-air setting for celebrations under the stars.", href: "/banquets", image: img.poolDecor, alt: "Poolside decorated for an event" },

@@ -30,7 +30,7 @@ export default function InRoomDiningPage() {
       <PageHero
         eyebrow="Dine in comfort"
         title="In-Room Dining"
-        image="/images/suite-bed.jpg"
+        image="/images/suite-1.jpg"
         alt="Suite bedroom with a slatted timber ceiling"
       />
 
