@@ -32,6 +32,27 @@ body {
   font-family: var(--font-body), system-ui, sans-serif;
 }
 
+/* Frosted glass: a light tint, a blur of what is behind, and a bright top edge like light catching the pane.
+   Use it over photos or glows; over a flat colour the blur has nothing to show. */
+@layer components {
+  .glass {
+    background: rgb(255 255 255 / 0.08);
+    -webkit-backdrop-filter: blur(24px) saturate(160%);
+    backdrop-filter: blur(24px) saturate(160%);
+    border: 1px solid rgb(255 255 255 / 0.14);
+    border-top-color: rgb(255 255 255 / 0.32);
+    box-shadow: 0 24px 60px -24px rgb(0 0 0 / 0.7);
+  }
+}
+/* Unlayered on purpose, so it also beats utility classes such as bg-ink/40 that tint a glass panel. */
+@media (prefers-reduced-transparency: reduce) {
+  .glass {
+    background: var(--color-surface-2);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
 /* Taps register immediately, with no double-tap-zoom wait. Pinch zoom still works. */
 a,
 button,

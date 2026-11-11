@@ -2,13 +2,23 @@
 
 import { useActionState } from "react";
 import { submitEnquiry, type EnquiryState } from "@/app/actions";
+import { occasions } from "@/lib/site";
 
 const initial: EnquiryState = { status: "idle" };
 
 const field =
   "mt-2 w-full border border-white/15 bg-surface px-4 py-3 text-base text-white outline-none transition-colors placeholder:text-white/30 focus:border-gold";
 
-export default function EnquiryForm({ room }: { room?: string }) {
+/** `compact` asks only for name, phone and occasion. */
+export default function EnquiryForm({
+  room,
+  occasion,
+  compact,
+}: {
+  room?: string;
+  occasion?: string;
+  compact?: boolean;
+}) {
   const [state, action, pending] = useActionState(submitEnquiry, initial);
 
   if (state.status === "success") {
@@ -31,38 +41,42 @@ export default function EnquiryForm({ room }: { room?: string }) {
         <input name="phone" type="tel" required autoComplete="tel" className={field} />
         {state.errors?.phone && <span className="text-xs text-red-400">{state.errors.phone}</span>}
       </label>
-      <label className="text-sm">
-        Email
-        <input name="email" type="email" autoComplete="email" className={field} />
-        {state.errors?.email && <span className="text-xs text-red-400">{state.errors.email}</span>}
-      </label>
+      {!compact && (
+        <label className="text-sm">
+          Email
+          <input name="email" type="email" autoComplete="email" className={field} />
+          {state.errors?.email && <span className="text-xs text-red-400">{state.errors.email}</span>}
+        </label>
+      )}
       <label className="text-sm">
         Occasion
-        <select name="eventType" className={field} defaultValue={room ? "Room stay" : "Wedding"}>
-          <option>Wedding</option>
-          <option>Corporate event</option>
-          <option>Poolside party</option>
-          <option>Room stay</option>
-          <option>Other</option>
+        <select name="eventType" className={field} defaultValue={occasion ?? (room ? "Room stay" : "Wedding")}>
+          {occasions.map((o) => (
+            <option key={o}>{o}</option>
+          ))}
         </select>
       </label>
-      <label className="text-sm">
-        Event date
-        <input name="date" type="date" className={field} />
-      </label>
-      <label className="text-sm">
-        Approx. guests
-        <input name="guests" type="number" min={1} inputMode="numeric" className={field} />
-      </label>
-      <label className="text-sm sm:col-span-2">
-        Message
-        <textarea
-          name="message"
-          rows={4}
-          className={field}
-          defaultValue={room ? `I'd like to enquire about the ${room} room.` : undefined}
-        />
-      </label>
+      {!compact && (
+        <>
+          <label className="text-sm">
+            Event date
+            <input name="date" type="date" className={field} />
+          </label>
+          <label className="text-sm">
+            Approx. guests
+            <input name="guests" type="number" min={1} inputMode="numeric" className={field} />
+          </label>
+          <label className="text-sm sm:col-span-2">
+            Message
+            <textarea
+              name="message"
+              rows={4}
+              className={field}
+              defaultValue={room ? `I'd like to enquire about the ${room} room.` : undefined}
+            />
+          </label>
+        </>
+      )}
       {/* Honeypot, hidden from people */}
       <input name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
       {state.status === "error" && !state.errors && (

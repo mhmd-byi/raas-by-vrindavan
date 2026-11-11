@@ -37,6 +37,9 @@ export const footerNav = [
   { href: "/privacy-policy", label: "Privacy Policy" },
 ];
 
+// Occasion choices on the enquiry form. A link can pre-select one with /contact-us?occasion=...
+export const occasions = ["Wedding", "Corporate event", "Poolside party", "Room stay", "Other"];
+
 // Location pin from the venue's own Google Maps listing.
 export const map = {
   lat: 22.7463066,

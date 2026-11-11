@@ -5,7 +5,7 @@ import EnquiryForm from "@/components/EnquiryForm";
 import GettingHere from "@/components/GettingHere";
 import Reveal from "@/components/fx/Reveal";
 import { ButtonLink, Heading, PageHero, Section } from "@/components/ui";
-import { img, map, rooms, site } from "@/lib/site";
+import { img, map, occasions, rooms, site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact Us & Enquire Now",
@@ -15,8 +15,8 @@ export const metadata: Metadata = {
 // "Enquire about <room>" links arrive as /contact-us?room=<slug>. Reading the query is request-time
 // data, so it sits behind Suspense and the plain form is the static fallback.
 async function PrefilledEnquiry({ searchParams }: Pick<PageProps<"/contact-us">, "searchParams">) {
-  const { room } = await searchParams;
-  return <EnquiryForm room={rooms.find((r) => r.slug === room)?.name} />;
+  const { room, occasion } = await searchParams;
+  return <EnquiryForm room={rooms.find((r) => r.slug === room)?.name} occasion={occasions.find((o) => o === occasion)} />;
 }
 
 export default function ContactPage(props: PageProps<"/contact-us">) {
