@@ -1,8 +1,9 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Jost } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import MotionProvider from "@/components/fx/MotionProvider";
 import SmoothScroll from "@/components/fx/SmoothScroll";
 import FloatingActions from "@/components/FloatingActions";
 import { img, map, site } from "@/lib/site";
@@ -32,6 +33,12 @@ export const metadata: Metadata = {
     locale: "en_IN",
     images: ["/images/AG7_9274.jpg"],
   },
+};
+
+// Phone browser chrome follows the page colour; the site is dark-only, so form controls render dark too.
+export const viewport: Viewport = {
+  themeColor: "#0b0607",
+  colorScheme: "dark",
 };
 
 // Structured data for search engines. Only facts already published on the site.
@@ -68,9 +75,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
         />
         <SmoothScroll />
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <MotionProvider>
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </MotionProvider>
         <FloatingActions />
       </body>
     </html>

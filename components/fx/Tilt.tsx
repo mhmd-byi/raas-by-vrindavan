@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useMotionTemplate, useMotionValue, useSpring } from "motion/react";
+import { motion, useMotionTemplate, useMotionValue, useReducedMotion, useSpring } from "motion/react";
 import type { ReactNode } from "react";
 
 /** 3D tilt toward the pointer, with a soft gold glare that follows it. */
@@ -15,12 +15,14 @@ export default function Tilt({
 }) {
   const gx = useMotionValue(50);
   const gy = useMotionValue(50);
-  const rotateY = useSpring(0, { stiffness: 180, damping: 18 });
-  const rotateX = useSpring(0, { stiffness: 180, damping: 18 });
+  // Damping near critical: the card settles smoothly instead of wobbling.
+  const rotateY = useSpring(0, { stiffness: 180, damping: 24 });
+  const rotateX = useSpring(0, { stiffness: 180, damping: 24 });
   const glare = useMotionTemplate`radial-gradient(420px circle at ${gx}% ${gy}%, rgba(212,175,95,0.18), transparent 60%)`;
+  const reduce = useReducedMotion();
 
   function onMove(e: React.PointerEvent<HTMLDivElement>) {
-    if (e.pointerType === "touch") return;
+    if (reduce || e.pointerType === "touch") return;
     const r = e.currentTarget.getBoundingClientRect();
     const x = (e.clientX - r.left) / r.width;
     const y = (e.clientY - r.top) / r.height;

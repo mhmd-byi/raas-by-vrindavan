@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useMotionValue, useSpring } from "motion/react";
+import { motion, useMotionValue, useReducedMotion, useSpring } from "motion/react";
 import Link from "next/link";
 import type { ReactNode } from "react";
 
@@ -14,15 +14,17 @@ export default function MagneticLink({
   children: ReactNode;
   className?: string;
 }) {
-  const x = useSpring(useMotionValue(0), { stiffness: 220, damping: 16 });
-  const y = useSpring(useMotionValue(0), { stiffness: 220, damping: 16 });
+  // Damping near critical: the button settles smoothly instead of wobbling.
+  const x = useSpring(useMotionValue(0), { stiffness: 220, damping: 26 });
+  const y = useSpring(useMotionValue(0), { stiffness: 220, damping: 26 });
+  const reduce = useReducedMotion();
 
   return (
     <motion.span
       style={{ x, y }}
       className="inline-block"
       onPointerMove={(e) => {
-        if (e.pointerType === "touch") return;
+        if (reduce || e.pointerType === "touch") return;
         const r = e.currentTarget.getBoundingClientRect();
         x.set((e.clientX - (r.left + r.width / 2)) * 0.3);
         y.set((e.clientY - (r.top + r.height / 2)) * 0.3);

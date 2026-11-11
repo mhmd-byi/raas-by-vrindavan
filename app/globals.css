@@ -20,10 +20,31 @@
   --font-display: var(--font-display);
 }
 
+html {
+  /* Our own press feedback replaces the browser's grey tap flash (see the (hover: none) rule below). */
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-body), system-ui, sans-serif;
+}
+
+/* Taps register immediately, with no double-tap-zoom wait. Pinch zoom still works. */
+a,
+button,
+[role="button"] {
+  touch-action: manipulation;
+}
+
+/* Instant press feedback on touch screens. Mouse users already get hover styles. */
+@media (hover: none) {
+  a:active,
+  button:active {
+    opacity: 0.7;
+  }
 }
 
 h1,
@@ -32,6 +53,14 @@ h3 {
   font-family: var(--font-display), Georgia, serif;
   font-weight: 500;
   line-height: 1.1;
+}
+
+/* Large display type reads too loose at default spacing, so tighten it as it grows. */
+h1 {
+  letter-spacing: -0.02em;
+}
+h2 {
+  letter-spacing: -0.015em;
 }
 
 @keyframes fadein {

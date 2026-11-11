@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform, type MotionValue } from "motion/react";
+import { motion, useReducedMotion, useScroll, useTransform, type MotionValue } from "motion/react";
 import { useRef } from "react";
 import ParallaxImage from "@/components/fx/ParallaxImage";
 import { TextLink } from "@/components/ui";
@@ -12,7 +12,8 @@ const STEP = 80;
 
 function StackCard({ room, i, n, progress }: { room: Room; i: number; n: number; progress: MotionValue<number> }) {
   // Each card shrinks and dims slightly as the next one slides over it.
-  const target = 1 - (n - i) * 0.04;
+  const reduce = useReducedMotion();
+  const target = reduce ? 1 : 1 - (n - i) * 0.04; // no shrinking when the visitor prefers reduced motion
   const scale = useTransform(progress, [i / n, 1], [1, target]);
   // The last card has nothing sliding over it, so it stays undimmed and readable.
   const dim = useTransform(progress, [i / n, (i + 1) / n], [0, i === n - 1 ? 0 : 0.55]);

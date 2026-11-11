@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { nav, site } from "@/lib/site";
 
-const links = [...nav.filter((n) => n.href !== "/"), { href: "/contact-us", label: "Book Now" }];
+const links = [...nav.filter((n) => n.href !== "/"), { href: "/contact-us", label: "Enquire Now" }];
 
 export default function Header() {
   const pathname = usePathname();
@@ -68,7 +68,7 @@ export default function Header() {
               href="/contact-us"
               className="rounded-full border border-gold/70 px-6 py-2.5 text-[13px] uppercase tracking-[0.22em] text-gold transition-colors hover:bg-gold hover:text-ink"
             >
-              Book Now
+              Enquire Now
             </Link>
           </nav>
 

@@ -8,7 +8,7 @@ import { ButtonLink, Heading, PageHero, Section } from "@/components/ui";
 import { img, map, rooms, site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Contact Us & Book Now",
+  title: "Contact Us & Enquire Now",
   description: "Enquire about weddings, events, rooms and banquets at Raas by Vrindavan, Kanadiya Road, Indore. Call +91 98260 37001 or +91 98260 56001.",
 };
 
@@ -22,7 +22,7 @@ async function PrefilledEnquiry({ searchParams }: Pick<PageProps<"/contact-us">,
 export default function ContactPage(props: PageProps<"/contact-us">) {
   return (
     <>
-      <PageHero eyebrow="Book Now" title="Contact Us" image={img.entrance} alt="Resort entrance at night" />
+      <PageHero eyebrow="Enquire Now" title="Contact Us" image={img.entrance} alt="Resort entrance at night" />
 
       <Section>
         <div className="grid gap-14 lg:grid-cols-[1fr_1.4fr]">

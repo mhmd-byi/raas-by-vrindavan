@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "motion/react";
+import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import Link from "next/link";
 import { useRef } from "react";
 import HeroBackdrop from "@/components/fx/HeroBackdrop";
@@ -10,9 +10,10 @@ import { img } from "@/lib/site";
 export default function Hero() {
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "35%"]);
+  const reduce = useReducedMotion();
+  const y = useTransform(scrollYProgress, [0, 1], reduce ? ["0%", "0%"] : ["0%", "35%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.92]);
+  const scale = useTransform(scrollYProgress, [0, 1], reduce ? [1, 1] : [1, 0.92]);
 
   return (
     <section ref={ref} className="relative flex min-h-svh items-end overflow-hidden bg-ink">
@@ -32,7 +33,7 @@ export default function Hero() {
           Indore · Weddings · Events · Stays
         </motion.p>
 
-        <h1 className="text-[56px] leading-[0.95] text-white sm:text-[96px] lg:text-[140px]">
+        <h1 className="text-[56px] leading-[0.95] text-white sm:text-[96px] lg:text-[112px]">
           <span className="block">
             <SplitText text="Where memories" delay={0.4} />
           </span>
@@ -54,7 +55,7 @@ export default function Hero() {
             href="/contact-us"
             className="w-fit rounded-full bg-gold px-9 py-4 text-[13px] uppercase tracking-[0.22em] text-ink transition-colors hover:bg-white"
           >
-            Book Now
+            Enquire Now
           </Link>
           <Link href="/gallery" className="w-fit text-[13px] uppercase tracking-[0.22em] text-white/80 underline-offset-8 hover:text-gold hover:underline">
             View Gallery

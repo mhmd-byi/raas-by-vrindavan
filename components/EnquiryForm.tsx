@@ -6,7 +6,7 @@ import { submitEnquiry, type EnquiryState } from "@/app/actions";
 const initial: EnquiryState = { status: "idle" };
 
 const field =
-  "mt-2 w-full border border-white/15 bg-surface px-4 py-3 text-sm text-white outline-none transition-colors placeholder:text-white/30 focus:border-gold";
+  "mt-2 w-full border border-white/15 bg-surface px-4 py-3 text-base text-white outline-none transition-colors placeholder:text-white/30 focus:border-gold";
 
 export default function EnquiryForm({ room }: { room?: string }) {
   const [state, action, pending] = useActionState(submitEnquiry, initial);
