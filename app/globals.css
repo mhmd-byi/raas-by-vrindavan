@@ -63,11 +63,6 @@ h2 {
   letter-spacing: -0.015em;
 }
 
-@keyframes fadein {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
 @keyframes marquee {
   from { transform: translateX(0); }
   to { transform: translateX(-100%); }
