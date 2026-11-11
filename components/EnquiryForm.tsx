@@ -8,7 +8,7 @@ const initial: EnquiryState = { status: "idle" };
 const field =
   "mt-2 w-full border border-white/15 bg-surface px-4 py-3 text-sm text-white outline-none transition-colors placeholder:text-white/30 focus:border-gold";
 
-export default function EnquiryForm() {
+export default function EnquiryForm({ room }: { room?: string }) {
   const [state, action, pending] = useActionState(submitEnquiry, initial);
 
   if (state.status === "success") {
@@ -38,7 +38,7 @@ export default function EnquiryForm() {
       </label>
       <label className="text-sm">
         Occasion
-        <select name="eventType" className={field} defaultValue="Wedding">
+        <select name="eventType" className={field} defaultValue={room ? "Room stay" : "Wedding"}>
           <option>Wedding</option>
           <option>Corporate event</option>
           <option>Poolside party</option>
@@ -56,7 +56,12 @@ export default function EnquiryForm() {
       </label>
       <label className="text-sm sm:col-span-2">
         Message
-        <textarea name="message" rows={4} className={field} />
+        <textarea
+          name="message"
+          rows={4}
+          className={field}
+          defaultValue={room ? `I'd like to enquire about the ${room} room.` : undefined}
+        />
       </label>
       {/* Honeypot, hidden from people */}
       <input name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />

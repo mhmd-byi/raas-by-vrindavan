@@ -36,7 +36,7 @@ export default function RoomsPage() {
                 <p className="max-w-md text-lg leading-relaxed text-white/65">{r.blurb}</p>
               </Reveal>
               <Reveal delay={0.3}>
-                <ButtonLink href="/contact-us" variant="outline">
+                <ButtonLink href={`/contact-us?room=${r.slug}`} variant="outline">
                   Enquire about {r.name}
                 </ButtonLink>
               </Reveal>

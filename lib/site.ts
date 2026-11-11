@@ -48,6 +48,17 @@ export const map = {
   qr: "/images/raas-location-qr.svg",
 };
 
+// Approximate road distances from the map pin above, from OpenStreetMap routing (no traffic).
+// Drive times are widened to allow for Indore traffic. Re-check in Google Maps before changing.
+const route = (dest: string) =>
+  `https://www.google.com/maps/dir/?api=1&origin=${map.lat},${map.lng}&destination=${dest}&travelmode=driving`;
+
+export const gettingHere = [
+  { place: "Indore Airport", distance: "26 km", time: "30–40 min", directionsUrl: route("22.7203745,75.8032544") },
+  { place: "Indore Junction railway station", distance: "13 km", time: "15–25 min", directionsUrl: route("22.7170064,75.8684722") },
+  { place: "Rajwada, city centre", distance: "15 km", time: "15–25 min", directionsUrl: route("22.7180160,75.8547632") },
+];
+
 export const img = {
   poolNight: "/images/AG7_9274.jpg",
   poolCourtyard: "/images/AG7_9324.jpg",

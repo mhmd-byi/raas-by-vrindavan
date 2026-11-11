@@ -15,6 +15,11 @@ const offerings = [
   { title: "In-Room Dining", blurb: "Meals, snacks and drinks brought to your room, in the comfort of your stay.", href: "/in-room-dining", image: img.diningSpread, alt: "A spread of snacks, paneer and a brownie sundae" },
 ];
 
+const stats = [
+  { value: "130+", label: "Rooms and suites" },
+  { value: String(rooms.length), label: "Room categories" },
+];
+
 const statement =
   "Every momentous day deserves an indelible celebration. At Raas by Vrindavan we tailor each occasion to your vision, from Turkish bath-inspired showers to palatial banquets and an otherworldly poolside.";
 
@@ -27,6 +32,19 @@ export default function Home() {
         className="border-y border-white/10 bg-ink py-6 font-display text-3xl italic text-white/80 sm:text-5xl"
         items={["Weddings", "Corporate Events", "Poolside Celebrations", "Royal Banquets", "Luxurious Stays"]}
       />
+
+      <section className="border-b border-white/10 bg-background">
+        <ul className="mx-auto grid max-w-[1400px] grid-cols-2 divide-x divide-white/10 px-5 lg:px-10">
+          {stats.map((s, i) => (
+            <li key={s.label} className="px-4 py-12 text-center lg:py-16">
+              <Reveal delay={i * 0.12}>
+                <p className="font-display text-6xl text-gold sm:text-7xl">{s.value}</p>
+                <p className="mt-3 text-xs uppercase tracking-[0.3em] text-white/60">{s.label}</p>
+              </Reveal>
+            </li>
+          ))}
+        </ul>
+      </section>
 
       <Section>
         <Reveal>

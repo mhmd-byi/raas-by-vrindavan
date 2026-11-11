@@ -1,16 +1,25 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { Suspense } from "react";
 import EnquiryForm from "@/components/EnquiryForm";
+import GettingHere from "@/components/GettingHere";
 import Reveal from "@/components/fx/Reveal";
 import { ButtonLink, Heading, PageHero, Section } from "@/components/ui";
-import { img, map, site } from "@/lib/site";
+import { img, map, rooms, site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact Us & Book Now",
   description: "Enquire about weddings, events, rooms and banquets at Raas by Vrindavan, Kanadiya Road, Indore. Call +91 98260 37001 or +91 98260 56001.",
 };
 
-export default function ContactPage() {
+// "Enquire about <room>" links arrive as /contact-us?room=<slug>. Reading the query is request-time
+// data, so it sits behind Suspense and the plain form is the static fallback.
+async function PrefilledEnquiry({ searchParams }: Pick<PageProps<"/contact-us">, "searchParams">) {
+  const { room } = await searchParams;
+  return <EnquiryForm room={rooms.find((r) => r.slug === room)?.name} />;
+}
+
+export default function ContactPage(props: PageProps<"/contact-us">) {
   return (
     <>
       <PageHero eyebrow="Book Now" title="Contact Us" image={img.entrance} alt="Resort entrance at night" />
@@ -46,7 +55,9 @@ export default function ContactPage() {
           </div>
           <div>
             <h2 className="mb-6 text-3xl">Enquire Now</h2>
-            <EnquiryForm />
+            <Suspense fallback={<EnquiryForm />}>
+              <PrefilledEnquiry searchParams={props.searchParams} />
+            </Suspense>
           </div>
         </div>
       </Section>
@@ -90,6 +101,11 @@ export default function ContactPage() {
               </a>
             </div>
           </Reveal>
+        </div>
+
+        <div className="mt-20">
+          <h3 className="mb-8 text-center text-4xl">Getting here</h3>
+          <GettingHere />
         </div>
       </Section>
     </>

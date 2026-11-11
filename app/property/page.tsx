@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import GettingHere from "@/components/GettingHere";
 import Reveal from "@/components/fx/Reveal";
 import Tilt from "@/components/fx/Tilt";
 import { CtaBand, Heading, PageHero, Photo, Section, TextLink } from "@/components/ui";
@@ -53,6 +54,15 @@ export default function PropertyPage() {
               </Tilt>
             </Reveal>
           ))}
+        </div>
+      </Section>
+
+      <Section>
+        <Heading center eyebrow="Plan your journey" title="Getting here">
+          Approximate road distances from Raas by Vrindavan on Kanadiya Road.
+        </Heading>
+        <div className="mt-16">
+          <GettingHere />
         </div>
       </Section>
 
